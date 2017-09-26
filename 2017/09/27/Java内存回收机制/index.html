@@ -6,14 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2017 | Hexo</title>
+  <title>Java内存回收机制 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/2017/index.html">
+  <meta name="description" content="###1.java的内存java的内存结构分为  堆 (是gc的主要区域) 线程共享,主要是用于分配实例对象和数组 栈 线程私有,它的生命周期和线程相同,又分成 虚拟机栈和本地方法栈,只有它会报 StackOverFlowError,栈深度超标 方法区 线程共享 用于储存被虚拟机加载的类的信息,静态变量 常量和编译后的.class字节码 程序计数器 线程私有,线程之间不相互影响,独立存取;以上部分">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java内存回收机制">
+<meta property="og:url" content="http://yoursite.com/2017/09/27/Java内存回收机制/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="###1.java的内存java的内存结构分为  堆 (是gc的主要区域) 线程共享,主要是用于分配实例对象和数组 栈 线程私有,它的生命周期和线程相同,又分成 虚拟机栈和本地方法栈,只有它会报 StackOverFlowError,栈深度超标 方法区 线程共享 用于储存被虚拟机加载的类的信息,静态变量 常量和编译后的.class字节码 程序计数器 线程私有,线程之间不相互影响,独立存取;以上部分">
+<meta property="og:image" content="http://images2017.cnblogs.com/blog/1115942/201709/1115942-20170927013005387-890261123.png">
+<meta property="og:updated_time" content="2017-09-26T17:31:10.071Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="Java内存回收机制">
+<meta name="twitter:description" content="###1.java的内存java的内存结构分为  堆 (是gc的主要区域) 线程共享,主要是用于分配实例对象和数组 栈 线程私有,它的生命周期和线程相同,又分成 虚拟机栈和本地方法栈,只有它会报 StackOverFlowError,栈深度超标 方法区 线程共享 用于储存被虚拟机加载的类的信息,静态变量 常量和编译后的.class字节码 程序计数器 线程私有,线程之间不相互影响,独立存取;以上部分">
+<meta name="twitter:image" content="http://images2017.cnblogs.com/blog/1115942/201709/1115942-20170927013005387-890261123.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -149,76 +155,186 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-Java内存回收机制" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      Java内存回收机制
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/27/Java内存回收机制/" class="archive-article-date">
+
+        
+        <a href="/2017/09/27/Java内存回收机制/" class="archive-article-date">
   	<time datetime="2017-09-26T17:07:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-27</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/27/Java内存回收机制/">Java内存回收机制</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>###1.java的内存<br>java的内存结构分为</p>
+<ul>
+<li>堆 (是gc的主要区域) 线程共享,主要是用于分配实例对象和数组</li>
+<li>栈 线程私有,它的生命周期和线程相同,又分成 <strong>虚拟机栈和本地方法栈</strong>,只有它会报 StackOverFlowError,栈深度超标</li>
+<li>方法区 线程共享 用于储存被虚拟机加载的类的信息,静态变量 常量和编译后的.class字节码</li>
+<li>程序计数器 线程私有,线程之间不相互影响,独立存取;<br>以上部分,线程私有是不会发生gc.并且他们是随线程生随线程灭,即<strong>程序计数器 本地方法栈和虚拟机栈</strong><br>来张图更详细<br><img src="http://images2017.cnblogs.com/blog/1115942/201709/1115942-20170927013005387-890261123.png" alt=""></li>
+</ul>
+<p>###2.GC回收机制–判断是否可以gc</p>
+<ul>
+<li>引用计数算法<br>原理:通过一个计数器对对象进行计数,对象被引用时+1,引用失效时-1;当计数为0时则说明可以被回收;<br>缺点:很难解决对象的相互循环引用问题</li>
+<li>可达性分析算法<br>Java虚拟机所采用的算法;<br>原理:通过一些列称为“GC Roots”的对象作为起始点，从这些节点开始向下搜索，搜索所走过的路径称为引用链，当一个对象到GC Roots没有任何引用链相连时，则证明此对象是不可用的。<br>那么哪些对象可以被称为gc roots呢—-虚拟机栈(栈中的本地变量列表)/方法区静态属性/方法区常量引用/本地方法栈中JNI 所引用的的对象都是可以作为 gc roots的</li>
+</ul>
+<p>###3.GC回收机制–如何回收</p>
+<ul>
+<li>标记清除算法<br>清除算法分成2个阶段–标记和清除; 标记阶段对所有存活的阶段进行标记,标记完成后,再扫描整个空间未标记对象,直接回收不存活的对象.<br>优点:大多数情况下比较高效,缺点是会造成内存碎片,碎片太多导致后面过程中对大内存的分配无足够空间时而提前猝发一次垃圾回收动作;</li>
+<li>复制算法<br>将可用内存将容量划分成大小相等的2块,每次清理时将其中A内存还存活的对象复制到B内存里面,然后再把A中清理掉;<br>优点高效且并不产生碎片,缺点牺牲了一半的内存为代价<br>适用存活对象少,回收对象多</li>
+<li>标记整理算法<br>该算法标记阶段和标记清除算法一样,完成标记后它不是直接清理可回收对象,而是将存活对象都向一端移动最后清理掉端边界意外的内存;<br>适用于存活对象多,回收对象少的情况</li>
+<li>分代收集算法<br>整合了复制算法和标记整理算法,根据新生代和老年代的不同特性采取上面的不同算法<br>新生代 生命周期短,每次回收时都有大量垃圾对象需要回收 复制算法<br>老年代 每次只有少量的对象需要回收 标记整理算法 </li>
+</ul>
+<p>####深入理解分代回收算法 Survivor(幸存者) Eden (谷歌翻译为伊甸园)</p>
+<ul>
+<li>复制算法中内存划分其实并不是按照1:1来划分老年代和新生代,,而是按照8:1:1分一个大的Eden区和两个小的survivor的空间</li>
+<li>为什么需要2个Survivor区 新生代一般经历15次Gc就可以移到老年代.当第一次gc时,我们可以把Eden的存活对象放入Survivor A空间,第二次Gc时,Survivor A也要使用复制算法,存活对象放到Survivor B上,第三次gc时,又将Survivor B对象复制到Survivor A上如此循环往复;</li>
+<li>为什么Eden这么大,因为新生代中存活的对象,需要转移的Survivor 的对象不多,算是缓解了复制算法的缺点;</li>
+</ul>
+<p>###4.GC回收机制–gc的执行机制</p>
+<ul>
+<li>Scavenge GC<br>当新对象生成并且在Eden申请空间失败时就会触发Scavenge GC;Eden区的gc会比较频繁</li>
+<li>Full GC<br>是对整个堆进行清理,要比Scavenge GC要慢,什么情况要进行Full GC呢,如下四种:<br>持久代被写满<br>System.gc调用<br>老年代被写满<br>上一次GC之后Heap的各域分配策略动态变化</li>
+</ul>
+<p>持久代:<br>用于存放静态文件，如今Java类、方法等。持久代对垃圾回收没有显著影响，但是有些应用可能动态生成或者调用一些class</p>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/09/27/Java内存回收机制/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/26/hello-world/" class="archive-article-date">
-  	<time datetime="2017-09-26T14:34:50.765Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-26</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2017/09/26/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hello World</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/26/hello-world/">Hello World</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -241,8 +357,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
