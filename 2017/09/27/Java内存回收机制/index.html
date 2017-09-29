@@ -53,7 +53,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="-java内存," />
 
 
 
@@ -69,18 +69,19 @@
 
 
 
-<meta name="description" content="###1.java的内存java的内存结构分为  堆 (是gc的主要区域) 线程共享,主要是用于分配实例对象和数组 栈 线程私有,它的生命周期和线程相同,又分成 虚拟机栈和本地方法栈,只有它会报 StackOverFlowError,栈深度超标 方法区 线程共享 用于储存被虚拟机加载的类的信息,静态变量 常量和编译后的.class字节码 程序计数器 线程私有,线程之间不相互影响,独立存取;以上部分">
+<meta name="description" content="1.java的内存java的内存结构分为  堆 (是gc的主要区域) 线程共享,主要是用于分配实例对象和数组 栈 线程私有,它的生命周期和线程相同,又分成 虚拟机栈和本地方法栈,只有它会报 StackOverFlowError,栈深度超标 方法区 线程共享 用于储存被虚拟机加载的类的信息,静态变量 常量和编译后的.class字节码 程序计数器 线程私有,线程之间不相互影响,独立存取;以上部分,线程">
+<meta name="keywords" content="-java内存">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java内存回收机制">
 <meta property="og:url" content="http://chenxianfu.github.io/2017/09/27/Java内存回收机制/index.html">
 <meta property="og:site_name" content="小陈的博客">
-<meta property="og:description" content="###1.java的内存java的内存结构分为  堆 (是gc的主要区域) 线程共享,主要是用于分配实例对象和数组 栈 线程私有,它的生命周期和线程相同,又分成 虚拟机栈和本地方法栈,只有它会报 StackOverFlowError,栈深度超标 方法区 线程共享 用于储存被虚拟机加载的类的信息,静态变量 常量和编译后的.class字节码 程序计数器 线程私有,线程之间不相互影响,独立存取;以上部分">
+<meta property="og:description" content="1.java的内存java的内存结构分为  堆 (是gc的主要区域) 线程共享,主要是用于分配实例对象和数组 栈 线程私有,它的生命周期和线程相同,又分成 虚拟机栈和本地方法栈,只有它会报 StackOverFlowError,栈深度超标 方法区 线程共享 用于储存被虚拟机加载的类的信息,静态变量 常量和编译后的.class字节码 程序计数器 线程私有,线程之间不相互影响,独立存取;以上部分,线程">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://images2017.cnblogs.com/blog/1115942/201709/1115942-20170927013005387-890261123.png">
-<meta property="og:updated_time" content="2017-09-26T17:31:10.071Z">
+<meta property="og:updated_time" content="2017-09-29T05:48:57.416Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java内存回收机制">
-<meta name="twitter:description" content="###1.java的内存java的内存结构分为  堆 (是gc的主要区域) 线程共享,主要是用于分配实例对象和数组 栈 线程私有,它的生命周期和线程相同,又分成 虚拟机栈和本地方法栈,只有它会报 StackOverFlowError,栈深度超标 方法区 线程共享 用于储存被虚拟机加载的类的信息,静态变量 常量和编译后的.class字节码 程序计数器 线程私有,线程之间不相互影响,独立存取;以上部分">
+<meta name="twitter:description" content="1.java的内存java的内存结构分为  堆 (是gc的主要区域) 线程共享,主要是用于分配实例对象和数组 栈 线程私有,它的生命周期和线程相同,又分成 虚拟机栈和本地方法栈,只有它会报 StackOverFlowError,栈深度超标 方法区 线程共享 用于储存被虚拟机加载的类的信息,静态变量 常量和编译后的.class字节码 程序计数器 线程私有,线程之间不相互影响,独立存取;以上部分,线程">
 <meta name="twitter:image" content="http://images2017.cnblogs.com/blog/1115942/201709/1115942-20170927013005387-890261123.png">
 
 
@@ -294,6 +295,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -321,33 +344,29 @@
       
 
       
-        <p>###1.java的内存<br>java的内存结构分为</p>
+        <h3 id="1-java的内存"><a href="#1-java的内存" class="headerlink" title="1.java的内存"></a>1.java的内存</h3><p>java的内存结构分为</p>
 <ul>
 <li>堆 (是gc的主要区域) 线程共享,主要是用于分配实例对象和数组</li>
 <li>栈 线程私有,它的生命周期和线程相同,又分成 <strong>虚拟机栈和本地方法栈</strong>,只有它会报 StackOverFlowError,栈深度超标</li>
 <li>方法区 线程共享 用于储存被虚拟机加载的类的信息,静态变量 常量和编译后的.class字节码</li>
 <li>程序计数器 线程私有,线程之间不相互影响,独立存取;<br>以上部分,线程私有是不会发生gc.并且他们是随线程生随线程灭,即<strong>程序计数器 本地方法栈和虚拟机栈</strong><br>来张图更详细<br><img src="http://images2017.cnblogs.com/blog/1115942/201709/1115942-20170927013005387-890261123.png" alt=""></li>
 </ul>
-<p>###2.GC回收机制–判断是否可以gc</p>
-<ul>
+<h3 id="2-GC回收机制–判断是否可以gc"><a href="#2-GC回收机制–判断是否可以gc" class="headerlink" title="2.GC回收机制–判断是否可以gc"></a>2.GC回收机制–判断是否可以gc</h3><ul>
 <li>引用计数算法<br>原理:通过一个计数器对对象进行计数,对象被引用时+1,引用失效时-1;当计数为0时则说明可以被回收;<br>缺点:很难解决对象的相互循环引用问题</li>
 <li>可达性分析算法<br>Java虚拟机所采用的算法;<br>原理:通过一些列称为“GC Roots”的对象作为起始点，从这些节点开始向下搜索，搜索所走过的路径称为引用链，当一个对象到GC Roots没有任何引用链相连时，则证明此对象是不可用的。<br>那么哪些对象可以被称为gc roots呢—-虚拟机栈(栈中的本地变量列表)/方法区静态属性/方法区常量引用/本地方法栈中JNI 所引用的的对象都是可以作为 gc roots的</li>
 </ul>
-<p>###3.GC回收机制–如何回收</p>
-<ul>
+<h3 id="3-GC回收机制–如何回收"><a href="#3-GC回收机制–如何回收" class="headerlink" title="3.GC回收机制–如何回收"></a>3.GC回收机制–如何回收</h3><ul>
 <li>标记清除算法<br>清除算法分成2个阶段–标记和清除; 标记阶段对所有存活的阶段进行标记,标记完成后,再扫描整个空间未标记对象,直接回收不存活的对象.<br>优点:大多数情况下比较高效,缺点是会造成内存碎片,碎片太多导致后面过程中对大内存的分配无足够空间时而提前猝发一次垃圾回收动作;</li>
 <li>复制算法<br>将可用内存将容量划分成大小相等的2块,每次清理时将其中A内存还存活的对象复制到B内存里面,然后再把A中清理掉;<br>优点高效且并不产生碎片,缺点牺牲了一半的内存为代价<br>适用存活对象少,回收对象多</li>
 <li>标记整理算法<br>该算法标记阶段和标记清除算法一样,完成标记后它不是直接清理可回收对象,而是将存活对象都向一端移动最后清理掉端边界意外的内存;<br>适用于存活对象多,回收对象少的情况</li>
 <li>分代收集算法<br>整合了复制算法和标记整理算法,根据新生代和老年代的不同特性采取上面的不同算法<br>新生代 生命周期短,每次回收时都有大量垃圾对象需要回收 复制算法<br>老年代 每次只有少量的对象需要回收 标记整理算法 </li>
 </ul>
-<p>####深入理解分代回收算法 Survivor(幸存者) Eden (谷歌翻译为伊甸园)</p>
-<ul>
+<h4 id="深入理解分代回收算法-Survivor-幸存者-Eden-谷歌翻译为伊甸园"><a href="#深入理解分代回收算法-Survivor-幸存者-Eden-谷歌翻译为伊甸园" class="headerlink" title="深入理解分代回收算法 Survivor(幸存者) Eden (谷歌翻译为伊甸园)"></a>深入理解分代回收算法 Survivor(幸存者) Eden (谷歌翻译为伊甸园)</h4><ul>
 <li>复制算法中内存划分其实并不是按照1:1来划分老年代和新生代,,而是按照8:1:1分一个大的Eden区和两个小的survivor的空间</li>
 <li>为什么需要2个Survivor区 新生代一般经历15次Gc就可以移到老年代.当第一次gc时,我们可以把Eden的存活对象放入Survivor A空间,第二次Gc时,Survivor A也要使用复制算法,存活对象放到Survivor B上,第三次gc时,又将Survivor B对象复制到Survivor A上如此循环往复;</li>
 <li>为什么Eden这么大,因为新生代中存活的对象,需要转移的Survivor 的对象不多,算是缓解了复制算法的缺点;</li>
 </ul>
-<p>###4.GC回收机制–gc的执行机制</p>
-<ul>
+<h3 id="4-GC回收机制–gc的执行机制"><a href="#4-GC回收机制–gc的执行机制" class="headerlink" title="4.GC回收机制–gc的执行机制"></a>4.GC回收机制–gc的执行机制</h3><ul>
 <li>Scavenge GC<br>当新对象生成并且在Eden申请空间失败时就会触发Scavenge GC;Eden区的gc会比较频繁</li>
 <li>Full GC<br>是对整个堆进行清理,要比Scavenge GC要慢,什么情况要进行Full GC呢,如下四种:<br>持久代被写满<br>System.gc调用<br>老年代被写满<br>上一次GC之后Heap的各域分配策略动态变化</li>
 </ul>
@@ -366,6 +385,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java内存/" rel="tag"># -java内存</a>
+          
+        </div>
       
 
       
@@ -420,8 +445,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           
             <img class="site-author-image" itemprop="image"
@@ -446,7 +480,25 @@
           
 
           
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
 
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
           
 
         </nav>
@@ -468,6 +520,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-java的内存"><span class="nav-number">1.</span> <span class="nav-text">1.java的内存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-GC回收机制–判断是否可以gc"><span class="nav-number">2.</span> <span class="nav-text">2.GC回收机制–判断是否可以gc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-GC回收机制–如何回收"><span class="nav-number">3.</span> <span class="nav-text">3.GC回收机制–如何回收</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#深入理解分代回收算法-Survivor-幸存者-Eden-谷歌翻译为伊甸园"><span class="nav-number">3.1.</span> <span class="nav-text">深入理解分代回收算法 Survivor(幸存者) Eden (谷歌翻译为伊甸园)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-GC回收机制–gc的执行机制"><span class="nav-number">4.</span> <span class="nav-text">4.GC回收机制–gc的执行机制</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
