@@ -53,7 +53,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="java内存," />
+  <meta name="keywords" content="阿里移动云," />
 
 
 
@@ -69,20 +69,25 @@
 
 
 
-<meta name="description" content="1.java的内存java的内存结构分为  堆 (是gc的主要区域) 线程共享,主要是用于分配实例对象和数组 栈 线程私有,它的生命周期和线程相同,又分成 虚拟机栈和本地方法栈,只有它会报 StackOverFlowError,栈深度超标 方法区 线程共享 用于储存被虚拟机加载的类的信息,静态变量 常量和编译后的.class字节码 程序计数器 线程私有,线程之间不相互影响,独立存取;以上部分,线程">
-<meta name="keywords" content="java内存">
+<meta name="description" content="小激动一年一度的阿里云栖大会是我们开发者的盛会,带着着激动的心情参加了这次开发者盛会,二话不说进入会场就被震感到了,先来张图聊表敬意. 主会场马云爸爸还是很有范的,将未来定义为无法定义,在这里宣布成立阿里三大王牌之一的达摩院.由于本身我自己从事移动技术开发,所有重点关注了阿里的移动开发领域; 移动云移动十年的回顾,阿里大牛天师进行分享在阿里的过去十年里,阿里的移动端团对从无到有,由开始的几个人到今">
+<meta name="keywords" content="阿里移动云">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java内存回收机制">
-<meta property="og:url" content="http://chenxianfu.github.io/2017/09/27/Java内存回收机制/index.html">
+<meta property="og:title" content="阿里移动云专场专题">
+<meta property="og:url" content="http://chenxianfu.github.io/2017/09/27/阿里移动云专场专题/index.html">
 <meta property="og:site_name" content="小陈的博客">
-<meta property="og:description" content="1.java的内存java的内存结构分为  堆 (是gc的主要区域) 线程共享,主要是用于分配实例对象和数组 栈 线程私有,它的生命周期和线程相同,又分成 虚拟机栈和本地方法栈,只有它会报 StackOverFlowError,栈深度超标 方法区 线程共享 用于储存被虚拟机加载的类的信息,静态变量 常量和编译后的.class字节码 程序计数器 线程私有,线程之间不相互影响,独立存取;以上部分,线程">
+<meta property="og:description" content="小激动一年一度的阿里云栖大会是我们开发者的盛会,带着着激动的心情参加了这次开发者盛会,二话不说进入会场就被震感到了,先来张图聊表敬意. 主会场马云爸爸还是很有范的,将未来定义为无法定义,在这里宣布成立阿里三大王牌之一的达摩院.由于本身我自己从事移动技术开发,所有重点关注了阿里的移动开发领域; 移动云移动十年的回顾,阿里大牛天师进行分享在阿里的过去十年里,阿里的移动端团对从无到有,由开始的几个人到今">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://images2017.cnblogs.com/blog/1115942/201709/1115942-20170927013005387-890261123.png">
-<meta property="og:updated_time" content="2017-09-29T09:08:55.469Z">
+<meta property="og:image" content="http://images2017.cnblogs.com/blog/1115942/201710/1115942-20171018001819006-595120090.png">
+<meta property="og:image" content="http://images2017.cnblogs.com/blog/1115942/201710/1115942-20171018001830599-2116186780.png">
+<meta property="og:image" content="http://images2017.cnblogs.com/blog/1115942/201710/1115942-20171018001837959-528526080.png">
+<meta property="og:image" content="http://images2017.cnblogs.com/blog/1115942/201710/1115942-20171018001851224-1377162337.png">
+<meta property="og:image" content="http://images2017.cnblogs.com/blog/1115942/201710/1115942-20171018001857381-1842638413.png">
+<meta property="og:image" content="http://images2017.cnblogs.com/blog/1115942/201710/1115942-20171018001927146-1020355605.png">
+<meta property="og:updated_time" content="2017-10-17T16:26:04.758Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java内存回收机制">
-<meta name="twitter:description" content="1.java的内存java的内存结构分为  堆 (是gc的主要区域) 线程共享,主要是用于分配实例对象和数组 栈 线程私有,它的生命周期和线程相同,又分成 虚拟机栈和本地方法栈,只有它会报 StackOverFlowError,栈深度超标 方法区 线程共享 用于储存被虚拟机加载的类的信息,静态变量 常量和编译后的.class字节码 程序计数器 线程私有,线程之间不相互影响,独立存取;以上部分,线程">
-<meta name="twitter:image" content="http://images2017.cnblogs.com/blog/1115942/201709/1115942-20170927013005387-890261123.png">
+<meta name="twitter:title" content="阿里移动云专场专题">
+<meta name="twitter:description" content="小激动一年一度的阿里云栖大会是我们开发者的盛会,带着着激动的心情参加了这次开发者盛会,二话不说进入会场就被震感到了,先来张图聊表敬意. 主会场马云爸爸还是很有范的,将未来定义为无法定义,在这里宣布成立阿里三大王牌之一的达摩院.由于本身我自己从事移动技术开发,所有重点关注了阿里的移动开发领域; 移动云移动十年的回顾,阿里大牛天师进行分享在阿里的过去十年里,阿里的移动端团对从无到有,由开始的几个人到今">
+<meta name="twitter:image" content="http://images2017.cnblogs.com/blog/1115942/201710/1115942-20171018001819006-595120090.png">
 
 
 
@@ -112,13 +117,13 @@
 
 
 
-  <link rel="canonical" href="http://chenxianfu.github.io/2017/09/27/Java内存回收机制/"/>
+  <link rel="canonical" href="http://chenxianfu.github.io/2017/09/27/阿里移动云专场专题/"/>
 
 
 
 
 
-  <title>Java内存回收机制 | 小陈的博客</title>
+  <title>阿里移动云专场专题 | 小陈的博客</title>
   
 
 
@@ -255,7 +260,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chenxianfu.github.io/2017/09/27/Java内存回收机制/">
+    <link itemprop="mainEntityOfPage" href="http://chenxianfu.github.io/2017/09/27/阿里移动云专场专题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chenxianfu">
@@ -272,7 +277,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Java内存回收机制</h1>
+          <h1 class="post-title" itemprop="name headline">阿里移动云专场专题</h1>
         
 
         <div class="post-meta">
@@ -307,8 +312,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android进阶/" itemprop="url" rel="index">
-                    <span itemprop="name">Android进阶</span>
+                  <a href="/categories/随笔感悟/" itemprop="url" rel="index">
+                    <span itemprop="name">随笔感悟</span>
                   </a>
                 </span>
 
@@ -344,33 +349,30 @@
       
 
       
-        <h3 id="1-java的内存"><a href="#1-java的内存" class="headerlink" title="1.java的内存"></a>1.java的内存</h3><p>java的内存结构分为</p>
-<ul>
-<li>堆 (是gc的主要区域) 线程共享,主要是用于分配实例对象和数组</li>
-<li>栈 线程私有,它的生命周期和线程相同,又分成 <strong>虚拟机栈和本地方法栈</strong>,只有它会报 StackOverFlowError,栈深度超标</li>
-<li>方法区 线程共享 用于储存被虚拟机加载的类的信息,静态变量 常量和编译后的.class字节码</li>
-<li>程序计数器 线程私有,线程之间不相互影响,独立存取;<br>以上部分,线程私有是不会发生gc.并且他们是随线程生随线程灭,即<strong>程序计数器 本地方法栈和虚拟机栈</strong><br>来张图更详细<br><img src="http://images2017.cnblogs.com/blog/1115942/201709/1115942-20170927013005387-890261123.png" alt=""></li>
-</ul>
-<h3 id="2-GC回收机制–判断是否可以gc"><a href="#2-GC回收机制–判断是否可以gc" class="headerlink" title="2.GC回收机制–判断是否可以gc"></a>2.GC回收机制–判断是否可以gc</h3><ul>
-<li>引用计数算法<br>原理:通过一个计数器对对象进行计数,对象被引用时+1,引用失效时-1;当计数为0时则说明可以被回收;<br>缺点:很难解决对象的相互循环引用问题</li>
-<li>可达性分析算法<br>Java虚拟机所采用的算法;<br>原理:通过一些列称为“GC Roots”的对象作为起始点，从这些节点开始向下搜索，搜索所走过的路径称为引用链，当一个对象到GC Roots没有任何引用链相连时，则证明此对象是不可用的。<br>那么哪些对象可以被称为gc roots呢—-虚拟机栈(栈中的本地变量列表)/方法区静态属性/方法区常量引用/本地方法栈中JNI 所引用的的对象都是可以作为 gc roots的</li>
-</ul>
-<h3 id="3-GC回收机制–如何回收"><a href="#3-GC回收机制–如何回收" class="headerlink" title="3.GC回收机制–如何回收"></a>3.GC回收机制–如何回收</h3><ul>
-<li>标记清除算法<br>清除算法分成2个阶段–标记和清除; 标记阶段对所有存活的阶段进行标记,标记完成后,再扫描整个空间未标记对象,直接回收不存活的对象.<br>优点:大多数情况下比较高效,缺点是会造成内存碎片,碎片太多导致后面过程中对大内存的分配无足够空间时而提前猝发一次垃圾回收动作;</li>
-<li>复制算法<br>将可用内存将容量划分成大小相等的2块,每次清理时将其中A内存还存活的对象复制到B内存里面,然后再把A中清理掉;<br>优点高效且并不产生碎片,缺点牺牲了一半的内存为代价<br>适用存活对象少,回收对象多</li>
-<li>标记整理算法<br>该算法标记阶段和标记清除算法一样,完成标记后它不是直接清理可回收对象,而是将存活对象都向一端移动最后清理掉端边界意外的内存;<br>适用于存活对象多,回收对象少的情况</li>
-<li>分代收集算法<br>整合了复制算法和标记整理算法,根据新生代和老年代的不同特性采取上面的不同算法<br>新生代 生命周期短,每次回收时都有大量垃圾对象需要回收 复制算法<br>老年代 每次只有少量的对象需要回收 标记整理算法 </li>
-</ul>
-<h4 id="深入理解分代回收算法-Survivor-幸存者-Eden-谷歌翻译为伊甸园"><a href="#深入理解分代回收算法-Survivor-幸存者-Eden-谷歌翻译为伊甸园" class="headerlink" title="深入理解分代回收算法 Survivor(幸存者) Eden (谷歌翻译为伊甸园)"></a>深入理解分代回收算法 Survivor(幸存者) Eden (谷歌翻译为伊甸园)</h4><ul>
-<li>复制算法中内存划分其实并不是按照1:1来划分老年代和新生代,,而是按照8:1:1分一个大的Eden区和两个小的survivor的空间</li>
-<li>为什么需要2个Survivor区 新生代一般经历15次Gc就可以移到老年代.当第一次gc时,我们可以把Eden的存活对象放入Survivor A空间,第二次Gc时,Survivor A也要使用复制算法,存活对象放到Survivor B上,第三次gc时,又将Survivor B对象复制到Survivor A上如此循环往复;</li>
-<li>为什么Eden这么大,因为新生代中存活的对象,需要转移的Survivor 的对象不多,算是缓解了复制算法的缺点;</li>
-</ul>
-<h3 id="4-GC回收机制–gc的执行机制"><a href="#4-GC回收机制–gc的执行机制" class="headerlink" title="4.GC回收机制–gc的执行机制"></a>4.GC回收机制–gc的执行机制</h3><ul>
-<li>Scavenge GC<br>当新对象生成并且在Eden申请空间失败时就会触发Scavenge GC;Eden区的gc会比较频繁</li>
-<li>Full GC<br>是对整个堆进行清理,要比Scavenge GC要慢,什么情况要进行Full GC呢,如下四种:<br>持久代被写满<br>System.gc调用<br>老年代被写满<br>上一次GC之后Heap的各域分配策略动态变化</li>
-</ul>
-<p>持久代:<br>用于存放静态文件，如今Java类、方法等。持久代对垃圾回收没有显著影响，但是有些应用可能动态生成或者调用一些class</p>
+        <h3 id="小激动"><a href="#小激动" class="headerlink" title="小激动"></a>小激动</h3><p>一年一度的阿里云栖大会是我们开发者的盛会,带着着激动的心情参加了这次开发者盛会,二话不说进入会场就被震感到了,先来张图聊表敬意.<br><img src="http://images2017.cnblogs.com/blog/1115942/201710/1115942-20171018001819006-595120090.png" alt=""></p>
+<p>主会场马云爸爸还是很有范的,将未来定义为无法定义,在这里宣布成立阿里三大王牌之一的达摩院.由于本身我自己从事移动技术开发,所有重点关注了阿里的移动开发领域;</p>
+<h3 id="移动云"><a href="#移动云" class="headerlink" title="移动云"></a>移动云</h3><h4 id="移动十年的回顾-阿里大牛天师进行分享"><a href="#移动十年的回顾-阿里大牛天师进行分享" class="headerlink" title="移动十年的回顾,阿里大牛天师进行分享"></a>移动十年的回顾,阿里大牛天师进行分享</h4><p>在阿里的过去十年里,阿里的移动端团对从无到有,由开始的几个人到今天这样的规模,的确是了步起,移动技术的发展日新月异,从最开始的2g时代,到12,13年的爆发式增长,以功能app程序为主,到后面的大app时代,即一个app往往集合这个公司大部分的业务,再到如今和今后AI app时代,以后的app一定是往AI和交互这块走,单纯的功能app可能只存在某些特定的地方;<br>移动技术的特点也是从效率为王到体验为王,从网络长连接技术保持高效的网络请求,到组件化插件化热修复的高效团队协作开发,到weex/小程序的一统大前端,为企业节省开发人员成本,到ar/直播的互动兴起,可以说app的技术特点是在不断往高效,高体验方面走的;<br><img src="http://images2017.cnblogs.com/blog/1115942/201710/1115942-20171018001830599-2116186780.png" alt=""><br><img src="http://images2017.cnblogs.com/blog/1115942/201710/1115942-20171018001837959-528526080.png" alt=""></p>
+<h4 id="阿里的探索"><a href="#阿里的探索" class="headerlink" title="阿里的探索"></a>阿里的探索</h4><ol>
+<li>Mobile First<br>从运营驱动技术到产品驱动技术,其中一直都是为了整个移动端app的发展,最终决定app的体验;</li>
+<li>技术创新推动技术升级<br>阿里在今年推出了android atlas技术框架,这个也是我自己本人目前在研究学习的一个框架,目前公司团队已经开始决定用altas作为今后的技术架构方向,它作为一款容器框架能够让你的业务进行分离的很清晰,听天师说阿里手淘app的业务bundleAndroid端有393个,ios端有273个,能够进行独立开发,编译,打包发布,这样就大大降低了各个业务之间的耦合性;<br>其次阿里推出了weex新一代的web引擎去替代笨重的webView,能都一统大前端,让我们更多的工程师解放出来去做对公司更有意义的事,而不是Android ios h5三端各写一套代码不能复用,weex的发布降低了企业成本,也提高了我们开发人员效率;这个技术我还没有去了解又是学到一个新知识.</li>
+</ol>
+<h4 id="移动云发布"><a href="#移动云发布" class="headerlink" title="移动云发布"></a>移动云发布</h4><p>经过这么多年的沉淀和积累,阿里将这些技术进行开放,整合上云,于是就有了移动云,这不经让我想到了圣经里面的一句话’’神说，要有光，就有了光。 “.<br><img src="http://images2017.cnblogs.com/blog/1115942/201710/1115942-20171018001851224-1377162337.png" alt=""><br><img src="http://images2017.cnblogs.com/blog/1115942/201710/1115942-20171018001857381-1842638413.png" alt=""></p>
+<p>阿里移动云的初衷就是让企业去掉技术的包袱,去快速的低成本的构建企业技术架构,去进行运营 减低技术成本,这就好比我们现在做项目都是再不断的造轮子,以后有了移动云就不用了,因为阿里移动云直接给了我们一辆车,老司机直接开车,再也不用写代码造轮子了,大大方便开发者和初创企业;正如阿里移动云的愿景一样:<br>无论规模多小的创业企业,创业团队都能基于阿里的服务快速便捷的拥有与手机淘宝支付宝一样完善的移动基础设施,都能低成本的拥抱移动互联网时代,正如移动云所期待的一样,30天,和你一起再造一个手机淘宝’<br><img src="http://images2017.cnblogs.com/blog/1115942/201710/1115942-20171018001927146-1020355605.png" alt=""></p>
+<p>阿里移动云从15年构建发布第一个应用,到现在已经服务14亿终端服务,影响到10万移动开发者,在今后的业务中,所有运行环境透明化按需拓展,所有运行研发流程流水化2高校交付,所有基础设施服务化按量付费,来进行代码提测<br>在阿里移动云上我们还可以进行bug检出,用云上的模拟器来进行</p>
+<ol>
+<li>功能自动化</li>
+<li>云端调试</li>
+<li>h5调试</li>
+<li>性能检测</li>
+<li>机型适配<br>这样也是达到测试的深度和广度;</li>
+</ol>
+<p>针对有需求的企业用户,阿里推出企业级移动应用服务emax解决方案,这套方案能够做更多的事,比如</p>
+<ol>
+<li>面向运营域的消息推送和短信推送相结合,更加有效和及时;结合云上大数据,进行精准定向营销;</li>
+<li>线上问题一键修复方案;</li>
+<li>httpdns的精准解析,0延迟等等<br>云端应用,你准备好了吗</li>
+</ol>
+<h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>听了2个多小时,认识到了大集团的差距还是让我们只能仰视,接下来好好提示技术吧!</p>
 
       
     </div>
@@ -388,7 +390,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/java内存/" rel="tag"># java内存</a>
+            <a href="/tags/阿里移动云/" rel="tag"># 阿里移动云</a>
           
         </div>
       
@@ -401,14 +403,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/09/27/Java内存回收机制/" rel="next" title="Java内存回收机制">
+                <i class="fa fa-chevron-left"></i> Java内存回收机制
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/09/27/阿里移动云专场专题/" rel="prev" title="阿里移动云专场专题">
-                阿里移动云专场专题 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/09/27/win10+hexo+github搭建博客/" rel="prev" title="win10+hexo+github搭建博客">
+                win10+hexo+github搭建博客 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -546,7 +552,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-java的内存"><span class="nav-number">1.</span> <span class="nav-text">1.java的内存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-GC回收机制–判断是否可以gc"><span class="nav-number">2.</span> <span class="nav-text">2.GC回收机制–判断是否可以gc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-GC回收机制–如何回收"><span class="nav-number">3.</span> <span class="nav-text">3.GC回收机制–如何回收</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#深入理解分代回收算法-Survivor-幸存者-Eden-谷歌翻译为伊甸园"><span class="nav-number">3.1.</span> <span class="nav-text">深入理解分代回收算法 Survivor(幸存者) Eden (谷歌翻译为伊甸园)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-GC回收机制–gc的执行机制"><span class="nav-number">4.</span> <span class="nav-text">4.GC回收机制–gc的执行机制</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#小激动"><span class="nav-number">1.</span> <span class="nav-text">小激动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#移动云"><span class="nav-number">2.</span> <span class="nav-text">移动云</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#移动十年的回顾-阿里大牛天师进行分享"><span class="nav-number">2.1.</span> <span class="nav-text">移动十年的回顾,阿里大牛天师进行分享</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#阿里的探索"><span class="nav-number">2.2.</span> <span class="nav-text">阿里的探索</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#移动云发布"><span class="nav-number">2.3.</span> <span class="nav-text">移动云发布</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后记"><span class="nav-number">3.</span> <span class="nav-text">后记</span></a></li></ol></div>
             
 
           </div>
