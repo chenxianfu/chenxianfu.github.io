@@ -69,20 +69,20 @@
 
 
 
-<meta name="description" content="一使用步骤 添加依赖 123// 内存泄漏检测debugCompile &apos;com.squareup.leakcanary:leakcanary-android:1.5.4&apos;releaseCompile &apos;com.squareup.leakcanary:leakcanary-android-no-op:1.5.4&apos;  在application中注册.后面有代码  运行项目后会出现图标如下,如果有泄漏">
+<meta name="description" content="一使用步骤在项目中我们经常遇到内存泄漏,但是我们应该怎样去捕捉他,as自带工具是一种,还有一种就第三方控件;  添加依赖 123// 内存泄漏检测debugCompile &apos;com.squareup.leakcanary:leakcanary-android:1.5.4&apos;releaseCompile &apos;com.squareup.leakcanary:leakcanary-android-no-op">
 <meta name="keywords" content="内存泄漏">
 <meta property="og:type" content="article">
 <meta property="og:title" content="内存泄漏工具LeakCanary使用">
 <meta property="og:url" content="http://chenxianfu.github.io/2018/03/12/内存泄漏工具LeakCanary使用/index.html">
 <meta property="og:site_name" content="小陈的博客">
-<meta property="og:description" content="一使用步骤 添加依赖 123// 内存泄漏检测debugCompile &apos;com.squareup.leakcanary:leakcanary-android:1.5.4&apos;releaseCompile &apos;com.squareup.leakcanary:leakcanary-android-no-op:1.5.4&apos;  在application中注册.后面有代码  运行项目后会出现图标如下,如果有泄漏">
+<meta property="og:description" content="一使用步骤在项目中我们经常遇到内存泄漏,但是我们应该怎样去捕捉他,as自带工具是一种,还有一种就第三方控件;  添加依赖 123// 内存泄漏检测debugCompile &apos;com.squareup.leakcanary:leakcanary-android:1.5.4&apos;releaseCompile &apos;com.squareup.leakcanary:leakcanary-android-no-op">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://images2018.cnblogs.com/blog/1115942/201803/1115942-20180301141518913-1216384289.png">
 <meta property="og:image" content="https://images2018.cnblogs.com/blog/1115942/201803/1115942-20180301141605378-971556722.png">
-<meta property="og:updated_time" content="2018-04-13T11:46:56.633Z">
+<meta property="og:updated_time" content="2018-04-13T11:59:29.001Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="内存泄漏工具LeakCanary使用">
-<meta name="twitter:description" content="一使用步骤 添加依赖 123// 内存泄漏检测debugCompile &apos;com.squareup.leakcanary:leakcanary-android:1.5.4&apos;releaseCompile &apos;com.squareup.leakcanary:leakcanary-android-no-op:1.5.4&apos;  在application中注册.后面有代码  运行项目后会出现图标如下,如果有泄漏">
+<meta name="twitter:description" content="一使用步骤在项目中我们经常遇到内存泄漏,但是我们应该怎样去捕捉他,as自带工具是一种,还有一种就第三方控件;  添加依赖 123// 内存泄漏检测debugCompile &apos;com.squareup.leakcanary:leakcanary-android:1.5.4&apos;releaseCompile &apos;com.squareup.leakcanary:leakcanary-android-no-op">
 <meta name="twitter:image" content="https://images2018.cnblogs.com/blog/1115942/201803/1115942-20180301141518913-1216384289.png">
 
 
@@ -345,23 +345,22 @@
       
 
       
-        <h1 id="一使用步骤"><a href="#一使用步骤" class="headerlink" title="一使用步骤"></a>一使用步骤</h1><ol>
+        <h1 id="一使用步骤"><a href="#一使用步骤" class="headerlink" title="一使用步骤"></a>一使用步骤</h1><p>在项目中我们经常遇到内存泄漏,但是我们应该怎样去捕捉他,as自带工具是一种,还有一种就第三方控件;</p>
+<ol>
 <li><p>添加依赖</p>
 <figure class="highlight 1c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 内存泄漏检测</span></div><div class="line">debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.4'</div><div class="line">releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'</div></pre></td></tr></table></figure>
 </li>
 <li><p>在application中注册.后面有代码</p>
 </li>
-<li><p>运行项目后会出现图标如下,如果有泄漏会以列表的形式进行展现;</p>
-<p><img src="https://images2018.cnblogs.com/blog/1115942/201803/1115942-20180301141518913-1216384289.png" alt=""></p>
-</li>
+<li>运行项目后会出现图标如下,如果有泄漏会以列表的形式进行展现;<br><img src="https://images2018.cnblogs.com/blog/1115942/201803/1115942-20180301141518913-1216384289.png" alt=""></li>
 </ol>
 <h1 id="二注意事项"><a href="#二注意事项" class="headerlink" title="二注意事项"></a>二注意事项</h1><ol>
-<li><p>由于我们这个项目是有多个moudle,一开始是LeakCanary是配置在commonlib项目下的,项目的application也是在commonlib下applicationLib里写入的,这样发现不行,后来将项目环境切成每个moudle单独运行,这时我所有配置项都在marketbundle这个里面配置了,这时发现是可以进行内存检测了;</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 是否是module环境</span></div><div class="line"><span class="attr">IS_MODULE</span>=<span class="literal">false</span></div></pre></td></tr></table></figure>
-<p> <img src="https://images2018.cnblogs.com/blog/1115942/201803/1115942-20180301141605378-971556722.png" alt=""></p>
+<li>由于我们这个项目是有多个moudle,一开始是LeakCanary是配置在commonlib项目下的,项目的application也是在commonlib下applicationLib里写入的,这样发现不行,后来将项目环境切成每个moudle单独运行,这时我所有配置项都在marketbundle这个里面配置了,这时发现是可以进行内存检测了;<figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 是否是module环境</span></div><div class="line"><span class="attr">IS_MODULE</span>=<span class="literal">false</span></div></pre></td></tr></table></figure>
 </li>
-<li><p>总结教训:一开始由于配置全部是在commomlib下面的,我app下面的application去继承commomlib的applicationlib,applicationlib写了Leakcanary的注册这时发现是不行的,安装app后并没有黄色的Leaks图标出现,而我自己试验自己的appDemo是完全可以的,这个时候其实我就应该意识到这个内存泄漏注册应该是在主app的moudle里面进行,而我走了很多的弯路,最后一步一步排除过来才完成了配置,总而言之注意2点</p>
-</li>
+</ol>
+<p><img src="https://images2018.cnblogs.com/blog/1115942/201803/1115942-20180301141605378-971556722.png" alt=""></p>
+<ol>
+<li>总结教训:一开始由于配置全部是在commomlib下面的,我app下面的application去继承commomlib的applicationlib,applicationlib写了Leakcanary的注册这时发现是不行的,安装app后并没有黄色的Leaks图标出现,而我自己试验自己的appDemo是完全可以的,这个时候其实我就应该意识到这个内存泄漏注册应该是在主app的moudle里面进行,而我走了很多的弯路,最后一步一步排除过来才完成了配置,总而言之注意2点</li>
 </ol>
 <ul>
 <li>在gradle里面配置的依赖和application必须是在同一个moudle下,并一定是主moudle;(多个modle情况下,一个的话就不存在这种情况)</li>

@@ -345,9 +345,10 @@
       
         
           
-          一使用步骤
+          一使用步骤在项目中我们经常遇到内存泄漏,但是我们应该怎样去捕捉他,as自带工具是一种,还有一种就第三方控件;
+
 添加依赖
-123// 内存泄漏检测debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.4'releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op
+123// 内存泄漏检测debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.4'releaseCompile
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -558,6 +559,158 @@ Android studio的版本小于3.0,步骤如下:需要下载插件
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chenxianfu.github.io/2017/10/18/android艺术探索第一章-activity生命周期/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chenxianfu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/my.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小陈的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/18/android艺术探索第一章-activity生命周期/" itemprop="url">android艺术探索第一章-activity生命周期</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-18T22:55:48+08:00">
+                2017-10-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android进阶/" itemprop="url" rel="index">
+                    <span itemprop="name">Android进阶</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          常规启动模式七种 明白每个过程做什么oncreat 1onstart  2onrestart 3onresme 4onpause 5onstop 6ondestory 7
+
+注意点 按back键回退时,执行顺序 5 6 4
+弄清楚 onstart 和onresume的区别
+对于a启动b,是a的onp
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/18/android艺术探索第一章-activity生命周期/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chenxianfu.github.io/2017/10/18/android艺术探索第四章-view的自定义/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -663,158 +816,6 @@ View树的遍历过程
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/10/18/android艺术探索第四章-view的自定义/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chenxianfu.github.io/2017/10/18/android艺术探索第一章-activity生命周期/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chenxianfu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/my.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小陈的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/18/android艺术探索第一章-activity生命周期/" itemprop="url">android艺术探索第一章-activity生命周期</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-18T22:55:48+08:00">
-                2017-10-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android进阶/" itemprop="url" rel="index">
-                    <span itemprop="name">Android进阶</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          常规启动模式七种 明白每个过程做什么oncreat 1onstart  2onrestart 3onresme 4onpause 5onstop 6ondestory 7
-
-注意点 按back键回退时,执行顺序 5 6 4
-弄清楚 onstart 和onresume的区别
-对于a启动b,是a的onp
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/18/android艺术探索第一章-activity生命周期/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
