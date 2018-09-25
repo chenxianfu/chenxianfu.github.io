@@ -53,7 +53,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="内存泄漏," />
+  <meta name="keywords" content="交互设计," />
 
 
 
@@ -69,21 +69,18 @@
 
 
 
-<meta name="description" content="一使用步骤在项目中我们经常遇到内存泄漏,但是我们应该怎样去捕捉他,as自带工具是一种,还有一种就第三方控件;  添加依赖 123// 内存泄漏检测debugCompile &apos;com.squareup.leakcanary:leakcanary-android:1.5.4&apos;releaseCompile &apos;com.squareup.leakcanary:leakcanary-android-no-op">
-<meta name="keywords" content="内存泄漏">
+<meta name="description" content="中秋花了一天多时间阅读了简约至上这本书,书中内容不多,主要是向我们传达了产品设计的4个要素,给了产品经理设计产品时的一些要义指导; 一产品定位在进行产品设计之前,首页需要对这款产品的商业定位需要有个清晰的规划;到底这个新项目是给哪一类用户进行使用,这一类用户在使用产品时自身带有哪些特点,当然这也涉及到用户模型的构建,不在此文的讨论范围之中; 二用户场景模拟在明确了产品定位之后,我们需要进行场景预设">
+<meta name="keywords" content="交互设计">
 <meta property="og:type" content="article">
-<meta property="og:title" content="内存泄漏工具LeakCanary使用">
-<meta property="og:url" content="http://chenxianfu.github.io/2018/03/12/内存泄漏工具LeakCanary使用/index.html">
+<meta property="og:title" content="简约至上">
+<meta property="og:url" content="http://chenxianfu.github.io/2018/09/25/简约至上/index.html">
 <meta property="og:site_name" content="小陈的博客">
-<meta property="og:description" content="一使用步骤在项目中我们经常遇到内存泄漏,但是我们应该怎样去捕捉他,as自带工具是一种,还有一种就第三方控件;  添加依赖 123// 内存泄漏检测debugCompile &apos;com.squareup.leakcanary:leakcanary-android:1.5.4&apos;releaseCompile &apos;com.squareup.leakcanary:leakcanary-android-no-op">
+<meta property="og:description" content="中秋花了一天多时间阅读了简约至上这本书,书中内容不多,主要是向我们传达了产品设计的4个要素,给了产品经理设计产品时的一些要义指导; 一产品定位在进行产品设计之前,首页需要对这款产品的商业定位需要有个清晰的规划;到底这个新项目是给哪一类用户进行使用,这一类用户在使用产品时自身带有哪些特点,当然这也涉及到用户模型的构建,不在此文的讨论范围之中; 二用户场景模拟在明确了产品定位之后,我们需要进行场景预设">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://images2018.cnblogs.com/blog/1115942/201803/1115942-20180301141518913-1216384289.png">
-<meta property="og:image" content="https://images2018.cnblogs.com/blog/1115942/201803/1115942-20180301141605378-971556722.png">
-<meta property="og:updated_time" content="2018-04-13T11:59:29.001Z">
+<meta property="og:updated_time" content="2018-09-25T08:12:38.917Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="内存泄漏工具LeakCanary使用">
-<meta name="twitter:description" content="一使用步骤在项目中我们经常遇到内存泄漏,但是我们应该怎样去捕捉他,as自带工具是一种,还有一种就第三方控件;  添加依赖 123// 内存泄漏检测debugCompile &apos;com.squareup.leakcanary:leakcanary-android:1.5.4&apos;releaseCompile &apos;com.squareup.leakcanary:leakcanary-android-no-op">
-<meta name="twitter:image" content="https://images2018.cnblogs.com/blog/1115942/201803/1115942-20180301141518913-1216384289.png">
+<meta name="twitter:title" content="简约至上">
+<meta name="twitter:description" content="中秋花了一天多时间阅读了简约至上这本书,书中内容不多,主要是向我们传达了产品设计的4个要素,给了产品经理设计产品时的一些要义指导; 一产品定位在进行产品设计之前,首页需要对这款产品的商业定位需要有个清晰的规划;到底这个新项目是给哪一类用户进行使用,这一类用户在使用产品时自身带有哪些特点,当然这也涉及到用户模型的构建,不在此文的讨论范围之中; 二用户场景模拟在明确了产品定位之后,我们需要进行场景预设">
 
 
 
@@ -113,13 +110,13 @@
 
 
 
-  <link rel="canonical" href="http://chenxianfu.github.io/2018/03/12/内存泄漏工具LeakCanary使用/"/>
+  <link rel="canonical" href="http://chenxianfu.github.io/2018/09/25/简约至上/"/>
 
 
 
 
 
-  <title>内存泄漏工具LeakCanary使用 | 小陈的博客</title>
+  <title>简约至上 | 小陈的博客</title>
   
 
 
@@ -256,7 +253,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chenxianfu.github.io/2018/03/12/内存泄漏工具LeakCanary使用/">
+    <link itemprop="mainEntityOfPage" href="http://chenxianfu.github.io/2018/09/25/简约至上/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chenxianfu">
@@ -273,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">内存泄漏工具LeakCanary使用</h1>
+          <h1 class="post-title" itemprop="name headline">简约至上</h1>
         
 
         <div class="post-meta">
@@ -285,8 +282,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T22:06:56+08:00">
-                2018-03-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-25T16:12:17+08:00">
+                2018-09-25
               </time>
             
 
@@ -308,8 +305,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android进阶/" itemprop="url" rel="index">
-                    <span itemprop="name">Android进阶</span>
+                  <a href="/categories/产品/" itemprop="url" rel="index">
+                    <span itemprop="name">产品</span>
                   </a>
                 </span>
 
@@ -345,34 +342,27 @@
       
 
       
-        <h1 id="一使用步骤"><a href="#一使用步骤" class="headerlink" title="一使用步骤"></a>一使用步骤</h1><p>在项目中我们经常遇到内存泄漏,但是我们应该怎样去捕捉他,as自带工具是一种,还有一种就第三方控件;</p>
-<ol>
-<li><p>添加依赖</p>
-<figure class="highlight 1c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 内存泄漏检测</span></div><div class="line">debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.4'</div><div class="line">releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'</div></pre></td></tr></table></figure>
-</li>
-<li><p>在application中注册.后面有代码</p>
-</li>
-<li>运行项目后会出现图标如下,如果有泄漏会以列表的形式进行展现;<br><img src="https://images2018.cnblogs.com/blog/1115942/201803/1115942-20180301141518913-1216384289.png" alt=""></li>
-</ol>
-<h1 id="二注意事项"><a href="#二注意事项" class="headerlink" title="二注意事项"></a>二注意事项</h1><ol>
-<li>由于我们这个项目是有多个moudle,一开始是LeakCanary是配置在commonlib项目下的,项目的application也是在commonlib下applicationLib里写入的,这样发现不行,后来将项目环境切成每个moudle单独运行,这时我所有配置项都在marketbundle这个里面配置了,这时发现是可以进行内存检测了;<figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 是否是module环境</span></div><div class="line"><span class="attr">IS_MODULE</span>=<span class="literal">false</span></div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p><img src="https://images2018.cnblogs.com/blog/1115942/201803/1115942-20180301141605378-971556722.png" alt=""></p>
-<ol>
-<li>总结教训:一开始由于配置全部是在commomlib下面的,我app下面的application去继承commomlib的applicationlib,applicationlib写了Leakcanary的注册这时发现是不行的,安装app后并没有黄色的Leaks图标出现,而我自己试验自己的appDemo是完全可以的,这个时候其实我就应该意识到这个内存泄漏注册应该是在主app的moudle里面进行,而我走了很多的弯路,最后一步一步排除过来才完成了配置,总而言之注意2点</li>
-</ol>
+        <p>中秋花了一天多时间阅读了简约至上这本书,书中内容不多,主要是向我们传达了产品设计的4个要素,给了产品经理设计产品时的一些要义指导;</p>
+<h3 id="一产品定位"><a href="#一产品定位" class="headerlink" title="一产品定位"></a>一产品定位</h3><p>在进行产品设计之前,首页需要对这款产品的商业定位需要有个清晰的规划;到底这个新项目是给哪一类用户进行使用,这一类用户在使用产品时自身带有哪些特点,当然这也涉及到用户模型的构建,不在此文的讨论范围之中;</p>
+<h3 id="二用户场景模拟"><a href="#二用户场景模拟" class="headerlink" title="二用户场景模拟"></a>二用户场景模拟</h3><p>在明确了产品定位之后,我们需要进行场景预设,明确产品设计之前会有哪些限制,最好能够进行真实环境的模拟体验;<br>这里介绍三种产品用户:</p>
 <ul>
-<li>在gradle里面配置的依赖和application必须是在同一个moudle下,并一定是主moudle;(多个modle情况下,一个的话就不存在这种情况)</li>
-<li>必须在当前application里面实现注册代码<figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">public <span class="class"><span class="keyword">class</span> <span class="title">HostApplication</span> <span class="keyword">extends</span> <span class="title">ApplicationLib</span> </span>&#123;</div><div class="line">    <span class="comment">//</span></div><div class="line">    <span class="keyword">private</span> <span class="type">String</span> <span class="type">TAG</span> = <span class="type">HostApplication</span>.<span class="keyword">class</span>.getSimpleName();</div><div class="line">    public <span class="type">RefWatcher</span> refWatcher;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    public void onCreate() &#123; <span class="comment">//必须在这个方法里面进行创建和注册,不要在lib里面写一个abstract方法这里面继承,不能这样</span></div><div class="line">        <span class="type">Log</span>.i(<span class="type">TAG</span>, <span class="string">"onCreate"</span>);</div><div class="line">        <span class="keyword">super</span>.onCreate();</div><div class="line">        refWatcher = setupLeakCanary();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="type">RefWatcher</span> setupLeakCanary() &#123;</div><div class="line">        <span class="type">JLog</span>.i(<span class="type">TAG</span>, <span class="string">"LeakCanary setupLeakCanary"</span>);</div><div class="line">        <span class="comment">//如果当前的进程是用来给LeakCanary 进行堆分析的则return，否则会执行LeakCanary的install方法。这样我们就可以使用LeakCanary了，如果检测到某个Activity 有内存泄露，LeakCanary 就会给出提示。</span></div><div class="line">        <span class="keyword">if</span> (<span class="type">LeakCanary</span>.isInAnalyzerProcess(<span class="keyword">this</span>)) &#123;</div><div class="line">            <span class="type">JLog</span>.i(<span class="type">TAG</span>, <span class="string">"LeakCanary isInAnalyzerProcess"</span>);</div><div class="line">            <span class="keyword">return</span> <span class="type">RefWatcher</span>.<span class="type">DISABLED</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="type">LeakCanary</span>.install(<span class="keyword">this</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static <span class="type">RefWatcher</span> getRefWatcher(<span class="type">Context</span> context) &#123;</div><div class="line">        <span class="type">HostApplication</span> leakApplication = (<span class="type">HostApplication</span>) context.getApplicationContext();</div><div class="line">        <span class="keyword">return</span> leakApplication.refWatcher;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
+<li>专家型用户:深入使用软件能够给软件提供建议,愿意探索软件新功能</li>
+<li>随意型用户:仅仅为了满足自己的好奇心而进行的一次使用</li>
+<li>主流用户:主要去实现某一项功能和任务而进行的使用<br>至此,我们在设计产品时,最初一定是满足主流用户的需求,快速进行最初版本的上架;</li>
 </ul>
-<p>尝试过的策略 </p>
-<ol>
-<li>在app里面的gradle配置和在其application里面进行配置 ok</li>
-<li>在publicbundle里面gradle配置,public的application里面写监听,然后app里面的application再继承 失败</li>
-<li>在publicbundle里面gradle配置,public的application里面写监听,然后app里面的application重新也写一遍,失败</li>
-<li>在publicbundle里面进行gradle配置,然后app 里面的application进行配置,按道理是应该成功的,聚饰项目也是 失败 </li>
+<h3 id="三简约设计四要素"><a href="#三简约设计四要素" class="headerlink" title="三简约设计四要素"></a>三简约设计四要素</h3><ol>
+<li><p>删除<br>1.1 有限的选择项更有助于用户进行选择<br>1.2 不要想为什么要删除他,而是去想保留它有什么用处;<br>1.3 避免视觉混乱的几个行之有效的方法<br>使用空白或者轻微的背景色来进行划分页面;<br>尽可能少使用强调;<br>1.4 控制信息的层次,减少元素形状的变化;<br>1.5 不要过度删除功能,电梯里没有按钮,可是人们更想当导航员,而不是过路人;</p>
+</li>
+<li><p>组织<br>2.1 对同一类型的模块进行分类;分类数目根据 7加减2 法则进行拟定;<br>2.2 时间线排序规则<br>2.3 进行感知分层;<br>2.4 期望路径和感知路径的区别,在进行产品规划时,一定需要进行反复模拟产品路径,多思考为什么,有没有其他的流程逻辑,进行排查比较斟酌;</p>
+</li>
+<li><p>隐藏<br>3.1 在删除完成之后,对非核心,低频次,但是有必须存在的功能进行隐藏操作;<br>3.2 删除不必要的,组织要提供的,隐藏非核心的;</p>
+</li>
+<li><p>转移<br>4.1 对某些功能进行操作转移,不过这个要素在一般APP端使用较少,在某些软硬件结合领域使用可能比较多一些;</p>
+</li>
+</ol>
+<h3 id="四简约设计的用户体验描述"><a href="#四简约设计的用户体验描述" class="headerlink" title="四简约设计的用户体验描述"></a>四简约设计的用户体验描述</h3><ol>
+<li>学会讲故事,讲故事核心是5W1H 何人何时在何处进行了什么操作,结果如何;</li>
+<li>细节的把控;</li>
 </ol>
 
       
@@ -391,7 +381,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/内存泄漏/" rel="tag"># 内存泄漏</a>
+            <a href="/tags/交互设计/" rel="tag"># 交互设计</a>
           
         </div>
       
@@ -404,8 +394,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/07/Kotlin学习总结/" rel="next" title="Kotlin学习总结">
-                <i class="fa fa-chevron-left"></i> Kotlin学习总结
+              <a href="/2018/04/16/Gldie-v4版本探究/" rel="next" title="Gldie v4版本探究">
+                <i class="fa fa-chevron-left"></i> Gldie v4版本探究
               </a>
             
           </div>
@@ -413,10 +403,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/04/16/Gldie-v4版本探究/" rel="prev" title="Gldie v4版本探究">
-                Gldie v4版本探究 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -553,7 +539,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一使用步骤"><span class="nav-number">1.</span> <span class="nav-text">一使用步骤</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二注意事项"><span class="nav-number">2.</span> <span class="nav-text">二注意事项</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一产品定位"><span class="nav-number">1.</span> <span class="nav-text">一产品定位</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二用户场景模拟"><span class="nav-number">2.</span> <span class="nav-text">二用户场景模拟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三简约设计四要素"><span class="nav-number">3.</span> <span class="nav-text">三简约设计四要素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四简约设计的用户体验描述"><span class="nav-number">4.</span> <span class="nav-text">四简约设计的用户体验描述</span></a></li></ol></div>
             
 
           </div>
